@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/md_white_1000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:checked="true"
+            android:id="@+id/item_navigation_drawer_news"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Noticias" />
+        <item
+            android:id="@+id/item_navigation_drawer_teams"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Equipos" />
+        <item
+            android:id="@+id/item_navigation_drawer_matches"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Partidos" />
+        <item
+            android:id="@+id/item_navigation_drawer_groups"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Grups" />
+        <item
+        android:id="@+id/item_navigation_drawer_stadiums"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Estadios" />
+        <item
+            android:id="@+id/item_navigation_drawer_about_us"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Stadiums" />
+
+    </group>
+
+
+    <!--
+
+    <item android:title="subheader">
+        <menu>
+            <item
+                android:id="@+id/item_navigation_drawer_registrarse"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="registrarse" />
+            <item
+                android:id="@+id/item_navigation_drawer_sesion"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="iniciar sesion" />
+            <item
+                android:id="@+id/item_navigation_drawer_salir"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="salir" />
+        </menu>
+    </item>
+
+    -->
+</menu>
