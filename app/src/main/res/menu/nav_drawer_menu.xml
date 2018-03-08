@@ -25,7 +25,7 @@
         <item
             android:id="@+id/item_navigation_drawer_groups"
             android:icon="@drawable/ic_launcher_background"
-            android:title="Grups" />
+            android:title="Grupos" />
         <item
         android:id="@+id/item_navigation_drawer_stadiums"
         android:icon="@drawable/ic_launcher_background"
@@ -33,7 +33,7 @@
         <item
             android:id="@+id/item_navigation_drawer_about_us"
             android:icon="@drawable/ic_launcher_background"
-            android:title="Stadiums" />
+            android:title="Acerca de nosotros" />
 
     </group>
 

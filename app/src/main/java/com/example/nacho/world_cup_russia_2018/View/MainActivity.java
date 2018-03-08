@@ -8,9 +8,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nacho.world_cup_russia_2018.R;
 
@@ -29,7 +31,57 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        /*- Action Bar-*/
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        actionBar = getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_action_bar_icon);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        drawerLayout = findViewById(R.id.navigation_drawer_layout);
+
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+        if (navigationView != null) {
+            setupNavigationDrawerContent(navigationView);
+        }
+
+        setupNavigationDrawerContent(navigationView);
+
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        //Inflamos el menú
+
+        getMenuInflater().inflate(R.menu.menu_icons, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.refreshMain:
+                //ABRIMOS EL DRAWER
+                //Refrescaríamos la pantalla para ver noticias
+
+                Toast.makeText(this, "Refrescando", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case android.R.id.home:
+                //ABRIMOS EL DRAWER
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     public void setupNavigationDrawerContent( NavigationView navigationView){
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {

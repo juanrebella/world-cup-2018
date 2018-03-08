@@ -5,7 +5,7 @@
 
     <group>
             <item
-                android:id="@+id/carrito"
+                android:id="@+id/refreshMain"
                 android:title="Refresh"
                 android:icon="@drawable/ic_autorenew"
                 android:orderInCategory="100"

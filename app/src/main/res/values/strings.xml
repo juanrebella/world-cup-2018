@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mundial Rusia 2018</string>
+    <string name="main_activity_news">Noticias</string>
+    <string name="activity_teams">Equipos Participantes</string>
 </resources>
