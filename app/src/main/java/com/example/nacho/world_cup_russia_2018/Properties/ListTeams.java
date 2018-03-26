@@ -5,4 +5,5 @@ package com.example.nacho.world_cup_russia_2018.Properties;
  */
 
 public class ListTeams {
+
 }
