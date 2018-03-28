@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/world-cup-2018.iml" filepath="$PROJECT_DIR$/.idea/world-cup-2018.iml" />
-      <module fileurl="file://C:\Users\Santiago\Desktop\nacho_project\world-cup-2018\worldcuprussia2018.iml" filepath="C:\Users\Santiago\Desktop\nacho_project\world-cup-2018\worldcuprussia2018.iml" />
+      <module fileurl="file://$PROJECT_DIR$/world-cup-2018.iml" filepath="$PROJECT_DIR$/world-cup-2018.iml" />
     </modules>
   </component>
 </project>

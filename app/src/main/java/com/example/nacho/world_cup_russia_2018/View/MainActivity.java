@@ -10,21 +10,35 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nacho.world_cup_russia_2018.Config.URLRest;
+import com.example.nacho.world_cup_russia_2018.Properties.ListTeams;
 import com.example.nacho.world_cup_russia_2018.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
              /*----------- Variables -------------*/
 
     ActionBar actionBar;
+    ListView lstmenu;
     DrawerLayout drawerLayout;
     TextView textView;
     ImageView Main;
     Toolbar toolbar;
+    String json = "https://my-json-server.typicode.com/juanrebella/gitCloneMirror2/oceania";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_action_bar_icon);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        lstmenu = findViewById(R.id.lstMenu);
         drawerLayout = findViewById(R.id.navigation_drawer_layout);
+
+
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         if (navigationView != null) {
@@ -48,6 +65,43 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setupNavigationDrawerContent(navigationView);
+
+        List<ListTeams> teams = new ArrayList<>();
+
+        ListTeams equipos = new ListTeams();
+
+        int idTeam;
+        int group;
+        String teamName;
+        int trophies;
+
+
+
+
+        try {
+            JSONObject object = new JSONObject(json);
+
+            idTeam = object.getInt("team_id");
+            group = object.getInt("group_id");
+            teamName = object.getString("name");
+            trophies = object.getInt("trophies");
+
+
+            equipos.setIdTeam(idTeam);
+            equipos.setGroup(group);
+            equipos.setTeamName(teamName);
+            equipos.setTrophies(trophies);
+
+            teams.add(equipos); //creamos un objeto Fruta y lo insertamos en la lista
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        ArrayAdapter adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, teams);
+        lstmenu.setAdapter(adapter);
+
 
     }
 
@@ -70,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 //ABRIMOS EL DRAWER
                 //Refrescaríamos la pantalla para ver noticias
 
-                Toast.makeText(this, "Refrescando", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Refrescando ...", Toast.LENGTH_SHORT).show();
                 return true;
 
             case android.R.id.home:
