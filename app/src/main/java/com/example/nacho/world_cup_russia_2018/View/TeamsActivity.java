@@ -1,6 +1,8 @@
 package com.example.nacho.world_cup_russia_2018.View;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,10 +13,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nacho.world_cup_russia_2018.Adapter.TeamsAdapter;
+import com.example.nacho.world_cup_russia_2018.Config.URLRest;
+import com.example.nacho.world_cup_russia_2018.Model.HttpConnection;
+import com.example.nacho.world_cup_russia_2018.Properties.ListTeams;
 import com.example.nacho.world_cup_russia_2018.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URL;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class TeamsActivity extends AppCompatActivity {
 
@@ -23,12 +39,26 @@ public class TeamsActivity extends AppCompatActivity {
     TextView textView;
     ImageView Main;
     Toolbar toolbar;
+    ListView listView;
+    private String url = URLRest.urlOceania;
+    JSONArray jsonArray;
+
+    private int status = 0;
+
+    HttpConnection service;
+    ProgressDialog progressDialog;
+    public List<ListTeams> lista = new LinkedList<ListTeams>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teams);
 
+
+        HttpConnection service = new HttpConnection();
+        new ListTeams2().execute();
 
         /*- Action Bar-*/
         toolbar = findViewById(R.id.toolbar);
@@ -37,6 +67,8 @@ public class TeamsActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_action_bar_icon);
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        listView = (ListView)findViewById(R.id.lstMenu);
 
         drawerLayout = findViewById(R.id.navigation_drawer_layout);
 
@@ -47,7 +79,88 @@ public class TeamsActivity extends AppCompatActivity {
 
         setupNavigationDrawerContent(navigationView);
 
+
+
     }
+
+
+    public class ListTeams2 extends AsyncTask<Void, Void, JSONArray> {
+
+
+        String response = "";
+        HashMap<String, String> postDataParams;
+        //String urlparams = url + "title";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog=new ProgressDialog(TeamsActivity.this);
+            progressDialog.setMessage("Buscando datos..");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+
+
+        @Override
+        protected JSONArray doInBackground(Void... params) {
+
+
+            try {
+                JSONObject jsonResponse;
+                jsonResponse = new JSONObject(response);
+                status = jsonResponse.getInt("status");
+                jsonArray = jsonResponse.optJSONArray("response");
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return jsonArray;
+        }
+
+        @Override
+        protected void onPostExecute(JSONArray jsonArray) {
+            super.onPostExecute(jsonArray);
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+                if (status == 200) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        try {
+
+                            ListTeams objDatos = new ListTeams();
+
+                            int id;
+                            String name;
+
+                            /* */
+
+                            JSONObject objet = jsonArray.getJSONObject(i);
+
+                            id = objet.getInt("team_id");
+                            name = objet.getString("name");
+
+                            objDatos.setIdTeam(id);
+                            objDatos.setTeamName(name);
+
+                            lista.add(objDatos);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                   TeamsAdapter adapter= new TeamsAdapter(TeamsActivity.this, lista ,R.layout.teams_list_view);
+                    listView.setAdapter(adapter);
+
+                }
+
+            }
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

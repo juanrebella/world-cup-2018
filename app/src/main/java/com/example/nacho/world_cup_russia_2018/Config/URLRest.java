@@ -10,4 +10,5 @@ public class URLRest {
             "https://my-json-server.typicode.com/juanrebella/gitCloneMirror2";
 
     public static final String urlConmebol = urlApi + "conmebol";
+    public static final String urlOceania = urlApi + "oceania";
 }

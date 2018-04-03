@@ -1,6 +1,8 @@
 package com.example.nacho.world_cup_russia_2018.View;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nacho.world_cup_russia_2018.Config.URLRest;
+import com.example.nacho.world_cup_russia_2018.Model.HttpConnection;
 import com.example.nacho.world_cup_russia_2018.Properties.ListTeams;
 import com.example.nacho.world_cup_russia_2018.R;
 
@@ -24,7 +27,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,12 +44,17 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     String json = "https://my-json-server.typicode.com/juanrebella/gitCloneMirror2/oceania";
 
-
+    URL url;
+    HttpConnection service;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        HttpConnection service = new HttpConnection();
+       // new ListadoEquipos().execute();
 
         /*- Action Bar-*/
         toolbar = findViewById(R.id.toolbar);
@@ -102,9 +112,97 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, teams);
         lstmenu.setAdapter(adapter);
 
-
     }
 
+    /*-
+
+    public class ListadoEquipos extends AsyncTask<Void, Void, JSONArray> {
+
+
+        String response = "";
+        HashMap<String, String> postDataParams;
+        //String urlparams = url + "title";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Buscando datos..");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+
+        @Override
+        protected JSONArray doInBackground(Void... params) {
+
+            postDataParams = new HashMap<String, String>();
+            postDataParams.put("userId", idUserDeveloper);
+            postDataParams.put("", "");
+
+            response = service.ServerDataHeader(url, postDataParams);
+
+            try {
+                JSONObject jsonResponse;
+                jsonResponse = new JSONObject(response);
+                status = jsonResponse.getInt("status");
+                jsonArray = jsonResponse.optJSONArray("response");
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return jsonArray;
+        }
+
+        @Override
+        protected void onPostExecute(JSONArray jsonArray) {
+            super.onPostExecute(jsonArray);
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+                if (status == 200) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        try {
+
+                            Listadatos_ws objDatos = new Listadatos_ws();
+
+                            int id;
+                            String name;
+                            String precio;
+                            String imagenes;
+
+
+
+                            JSONObject objet = jsonArray.getJSONObject(i);
+
+                            id = objet.getInt("id");
+                            name = objet.getString("name");
+                            precio = objet.getString("precio");
+                            imagenes = objet.getString("nameImage");
+
+                            objDatos.setId(id);
+                            objDatos.setNombre(name);
+                            objDatos.setPrecio(precio);
+                            objDatos.setImage(imagenes);
+
+                            lista.add(objDatos);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                    adapter = new AdapterLista(MainActivity.this, lista, R.layout.item_lista_comida);
+                    lstMenu.setAdapter(adapter);
+
+                }
+
+            }
+        }
+    }
+-*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 

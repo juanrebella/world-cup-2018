@@ -2,4 +2,9 @@
     <string name="app_name">Mundial Rusia 2018</string>
     <string name="main_activity_news">Noticias</string>
     <string name="activity_teams">Equipos</string>
+    <string name="dont_have_account">¿No tienes cuenta? </string>
+    <string name="hint_password">Contraseña</string>
+    <string name="text_button_login">Login</string>
+    <string name="hint_username">Usuario</string>
+    <string name="create_here">Crear una cuenta</string>
 </resources>

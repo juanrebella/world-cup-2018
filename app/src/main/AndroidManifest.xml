@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nacho.world_cup_russia_2018">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +22,8 @@
         <activity android:name=".View.MatchesActivity" />
         <activity android:name=".View.GroupsActivity" />
         <activity android:name=".View.StadiumsActivity" />
-        <activity android:name=".View.AboutUsActivity"></activity>
+        <activity android:name=".View.AboutUsActivity" />
+        <activity android:name=".View.LoginActivity"></activity>
     </application>
 
 </manifest>
