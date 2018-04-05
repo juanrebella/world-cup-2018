@@ -51,7 +51,7 @@ public class TeamsActivity extends AppCompatActivity {
     TextView textView;
     ImageView Main;
     Toolbar toolbar;
-    ListView listView;
+    ListView listConmebol, listAsia;
     String url = "https://my-json-server.typicode.com/juanrebella/gitCloneMirror2/db/";
 
 
@@ -59,12 +59,13 @@ public class TeamsActivity extends AppCompatActivity {
     /*- Variables Json Object -*/
 
 
-    TeamsAdapter adapter;
+    TeamsAdapter adapter, adapter2;
     private int status = 0;
 
     HttpConnection service;
     ProgressDialog progressDialog;
-    public List<ListTeams> lista = new LinkedList<ListTeams>();
+    public List<ListTeams> listaConmebol = new LinkedList<ListTeams>();
+    public List<ListTeams> listaAsia = new LinkedList<ListTeams>();
 
 
 
@@ -86,7 +87,8 @@ public class TeamsActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_action_bar_icon);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        listView = (ListView)findViewById(R.id.lstConmebol);
+        listConmebol = findViewById(R.id.lstConmebol);
+        listAsia = findViewById(R.id.lstAsia);
 
         drawerLayout = findViewById(R.id.navigation_drawer_layout);
 
@@ -98,7 +100,9 @@ public class TeamsActivity extends AppCompatActivity {
         setupNavigationDrawerContent(navigationView);
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //Listas
+
+        listConmebol.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), "Has clickeado algo " + position, Toast.LENGTH_SHORT).show();
@@ -106,13 +110,23 @@ public class TeamsActivity extends AppCompatActivity {
             }
         });
 
+        listAsia.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "Has clickeado algo " + position + " en asia", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
 
         JsonObjectRequest json = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonArray =  response.getJSONArray("asia");
+                            JSONArray jsonArray =  response.getJSONArray("conmebol");
 
                             for (int i = 0; i < jsonArray.length(); i++){
                                 JSONObject object = jsonArray.getJSONObject(i);
@@ -129,10 +143,12 @@ public class TeamsActivity extends AppCompatActivity {
                                 objDatos.setGroup("Grupo " +group);
                                 objDatos.setTrophies("Títulos: " +trophies);
 
-                                lista.add(objDatos);
+                                listaConmebol.add(objDatos);
+
+
+
 
                             }
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -154,8 +170,60 @@ public class TeamsActivity extends AppCompatActivity {
 
         mQueue.add(json);
 
-        adapter= new TeamsAdapter(TeamsActivity.this, lista);
-        listView.setAdapter(adapter);
+
+        JsonObjectRequest json2 = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonArray =  response.getJSONArray("asia");
+
+                            for (int i = 0; i < jsonArray.length(); i++){
+                                JSONObject object = jsonArray.getJSONObject(i);
+                                ListTeams objDatos2 = new ListTeams();
+
+
+
+                                String name = object.getString("name");
+                                String group = object.getString("group_id");
+                                String trophies = object.getString("trophies");
+
+
+                                objDatos2.setTeamName("Equipo " +name);
+                                objDatos2.setGroup("Grupo " +group);
+                                objDatos2.setTrophies("Títulos: " +trophies);
+
+                                listaAsia.add(objDatos2);
+
+
+
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        adapter2.notifyDataSetChanged();
+                    }
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                AlertDialog.Builder add = new AlertDialog.Builder(TeamsActivity.this);
+                add.setMessage(error.getMessage()).setCancelable(true);
+                AlertDialog alert = add.create();
+                alert.setTitle("Error!!!");
+                alert.show();
+
+            }
+        });
+
+        mQueue.add(json2);
+
+        adapter = new TeamsAdapter(TeamsActivity.this, listaConmebol);
+        adapter2 = new TeamsAdapter(TeamsActivity.this, listaAsia);
+        listConmebol.setAdapter(adapter);
+        listAsia.setAdapter(adapter2);
     }
 
     @Override
