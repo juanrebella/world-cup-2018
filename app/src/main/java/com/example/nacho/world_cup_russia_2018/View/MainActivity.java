@@ -80,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
         ListTeams equipos = new ListTeams();
 
-        int idTeam;
-        int group;
+        String idTeam;
+        String group;
         String teamName;
-        int trophies;
+        String trophies;
 
 
 
@@ -91,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONObject object = new JSONObject(json);
 
-            idTeam = object.getInt("team_id");
-            group = object.getInt("group_id");
+            idTeam = object.getString("team_id");
+            group = object.getString("group_id");
             teamName = object.getString("name");
-            trophies = object.getInt("trophies");
+            trophies = object.getString("trophies");
 
 
             equipos.setIdTeam(idTeam);

@@ -1,6 +1,7 @@
 package com.example.nacho.world_cup_russia_2018.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.example.nacho.world_cup_russia_2018.Properties.ListTeams;
 import com.example.nacho.world_cup_russia_2018.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,19 +24,16 @@ import java.util.List;
 
 public class TeamsAdapter extends BaseAdapter {
 
-    private int layoutData;
+    private LayoutInflater inflater;
     private List<ListTeams> equiposList;
-    ArrayAdapter<String> mAdapter;
     private Activity activity;
 
     private String getId;
-    private String imagenes;
 
-    public TeamsAdapter(Activity activity, List<ListTeams> list, int layout){
+    public TeamsAdapter(Activity activity, List<ListTeams> list){
 
         this.activity=activity;
         this.equiposList=list;
-        this.layoutData=layout;
     }
 
     @Override
@@ -55,24 +54,22 @@ public class TeamsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        convertView=inflater.inflate(layoutData, null);
+        if (inflater == null)
+            inflater = (LayoutInflater) activity
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (convertView == null)
+            convertView = inflater.inflate(R.layout.teams_list_view, null);
 
-        TextView lblid = convertView.findViewById(R.id.txtidTitle);
-        //SmartImageView imageView=(SmartImageView)convertView.findViewById(R.id.imageproduct);
-        TextView teamNombre = convertView.findViewById(R.id.txttitulo);
-        //ImageView teamImage = convertView.findViewById(R.id.image_flecha);
+        TextView txtNombreEquipo = convertView.findViewById(R.id.txtNombreEquipo);
+        TextView txtGrupo = convertView.findViewById(R.id.txtGrupo);
+        TextView txtTitulos = convertView.findViewById(R.id.txtTitulos);
 
-        //imagenes = (lista.get(position).getImage().toString());
-        //String urlfinal= URL_Rest.urlImage + imagenes;
+        ListTeams m = equiposList.get(position);
 
-        getId=Integer.toString(equiposList.get(position).getIdTeam());
-        lblid.setText(getId);
-        teamNombre.setText(equiposList.get(position).getTeamName());
-        //teamImage.setText(equiposList.get(position).getPrecio());
+        txtNombreEquipo.setText(m.getTeamName());
+        txtGrupo.setText(m.getGroup());
+        txtTitulos.setText(m.getTrophies());
 
-        //Rect rect= new Rect(imageView.getLeft(),imageView.getTop(),imageView.getRight(),imageView.getBottom());
-        //imageView.setImageUrl(urlfinal, rect);
 
         return convertView;
     }

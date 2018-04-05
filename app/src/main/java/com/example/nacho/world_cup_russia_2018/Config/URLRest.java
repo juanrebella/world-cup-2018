@@ -7,7 +7,7 @@ package com.example.nacho.world_cup_russia_2018.Config;
 public class URLRest {
 
     public static final  String urlApi =
-            "https://my-json-server.typicode.com/juanrebella/gitCloneMirror2";
+            "https://my-json-server.typicode.com/juanrebella/gitCloneMirror2/oceania";
 
     public static final String urlConmebol = urlApi + "conmebol";
     public static final String urlOceania = urlApi + "oceania";

@@ -5,37 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10"
+        android:orientation="vertical"
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/txttitulo"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="9"
+            android:id="@+id/txtNombreEquipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="fill_vertical"
-            android:text="Prueba"
-            android:paddingLeft="10dp"/>
+            android:paddingLeft="10dp"
+            android:textColor="@color/md_black_1000"
+            android:layout_below="@+id/txtGrupo"
+            android:text=""/>
 
-        <ImageView
-            android:id="@+id/image_flecha"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"/>
+        <TextView
+            android:id="@+id/txtGrupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="fill_vertical"
+            android:textSize="25sp"
+            android:textColor="@color/md_black_1000"
+            android:paddingLeft="10dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/txtTitulos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:gravity="fill_vertical"
+            android:textColor="@color/md_black_1000"
+            android:paddingLeft="10dp"
+            android:text="" />
 
 
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/txtidTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
+    </RelativeLayout>
 
 </LinearLayout>

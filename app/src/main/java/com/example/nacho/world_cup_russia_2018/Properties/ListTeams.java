@@ -8,24 +8,24 @@ import org.json.JSONObject;
 
 public class ListTeams {
 
-    private int idTeam;
-    private int group;
+    private String idTeam;
+    private String group;
     private String teamName;
-    private int trophies;
+    private String trophies;
 
-    public int getIdTeam() {
+    public String getIdTeam() {
         return idTeam;
     }
 
-    public void setIdTeam(int idTeam) {
+    public void setIdTeam(String idTeam) {
         this.idTeam = idTeam;
     }
 
-    public int getGroup() {
+    public String getGroup() {
         return group;
     }
 
-    public void setGroup(int group) {
+    public void setGroup(String group) {
         this.group = group;
     }
 
@@ -37,11 +37,11 @@ public class ListTeams {
         this.teamName = teamName;
     }
 
-    public int getTrophies() {
+    public String getTrophies() {
         return trophies;
     }
 
-    public void setTrophies(int trophies) {
+    public void setTrophies(String trophies) {
         this.trophies = trophies;
     }
 }
