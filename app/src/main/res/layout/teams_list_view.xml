@@ -11,14 +11,23 @@
         android:orientation="vertical"
         android:padding="5dp">
 
+        <com.github.snowdream.android.widget.SmartImageView
+            android:id="@+id/imgTeamIcon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:paddingStart="2dp"
+            />
+
+
         <TextView
             android:id="@+id/txtNombreEquipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="fill_vertical"
-            android:paddingLeft="10dp"
+            android:paddingLeft="15dp"
             android:textColor="@color/md_black_1000"
             android:layout_below="@+id/txtGrupo"
+            android:layout_toEndOf="@+id/imgTeamIcon"
             android:text=""/>
 
         <TextView
@@ -28,7 +37,8 @@
             android:gravity="fill_vertical"
             android:textSize="25sp"
             android:textColor="@color/md_black_1000"
-            android:paddingLeft="10dp"
+            android:layout_toEndOf="@+id/imgTeamIcon"
+            android:paddingLeft="15dp"
             android:text="" />
 
         <TextView

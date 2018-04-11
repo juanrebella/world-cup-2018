@@ -243,20 +243,17 @@ public class MainActivity extends AppCompatActivity {
                         switch (menuItem.getItemId()) {
                             case R.id.item_navigation_drawer_news:
 
-                                /*- Pasta -*/
+                                /*- Noticias -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
 
-                                Intent intentNews = new Intent(MainActivity.this, MainActivity.class);
-                                finish();
-                                startActivity(intentNews);
 
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_teams:
 
-                                /*- Minutas -*/
+                                /*- Equipos -*/
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
 
@@ -264,11 +261,10 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentTeams);
 
-                                return true;
-
+                                break;
                             case R.id.item_navigation_drawer_matches:
 
-                                /*- Ensalada -*/
+                                /*- Partidos -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -277,10 +273,10 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentMatches);
 
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_groups:
-                                /*- Parrilla -*/
+                                /*- Grupos -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -289,11 +285,11 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentGroups);
 
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_stadiums:
 
-                                /*- Mariscos -*/
+                                /*- Estadios -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -302,11 +298,11 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentStadiums);
 
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_about_us:
 
-                                /*- Mariscos -*/
+                                /*- Sobre Nosotros -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -315,8 +311,7 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentAboutUs);
 
-                                return true;
-
+                                break;
 
                         }
                         return true;

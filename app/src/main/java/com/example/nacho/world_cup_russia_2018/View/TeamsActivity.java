@@ -52,7 +52,7 @@ public class TeamsActivity extends AppCompatActivity {
     ImageView Main;
     Toolbar toolbar;
     ListView listConmebol, listAsia;
-    String url = "https://my-json-server.typicode.com/juanrebella/gitCloneMirror2/db/";
+    String url = URLRest.urlApi;
 
 
     RequestQueue mQueue;
@@ -266,7 +266,7 @@ public class TeamsActivity extends AppCompatActivity {
                         switch (menuItem.getItemId()) {
                             case R.id.item_navigation_drawer_news:
 
-                                /*- Pasta -*/
+                                /*- Noticias -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -275,23 +275,19 @@ public class TeamsActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentNews);
 
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_teams:
 
-                                /*- Minutas -*/
+                                /*- Equipos -*/
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
 
-                                Intent intentTeams = new Intent(TeamsActivity.this, TeamsActivity.class);
-                                finish();
-                                startActivity(intentTeams);
-
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_matches:
 
-                                /*- Ensalada -*/
+                                /*- Partidos -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -300,10 +296,11 @@ public class TeamsActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentMatches);
 
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_groups:
-                                /*- Parrilla -*/
+
+                                /*- Grupos -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -312,11 +309,11 @@ public class TeamsActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentGroups);
 
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_stadiums:
 
-                                /*- Mariscos -*/
+                                /*- Estadios -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -325,11 +322,11 @@ public class TeamsActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentStadiums);
 
-                                return true;
+                                break;
 
                             case R.id.item_navigation_drawer_about_us:
 
-                                /*- Mariscos -*/
+                                /*- Sobre Nosotros -*/
 
                                 menuItem.setChecked(true);
                                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -338,14 +335,14 @@ public class TeamsActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intentAboutUs);
 
-                                return true;
+                                break;
 
 
                         }
                         return true;
                     }
                 });
-    }
+      }
 
 
     }
