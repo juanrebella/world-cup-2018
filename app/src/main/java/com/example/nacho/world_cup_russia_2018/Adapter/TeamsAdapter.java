@@ -12,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.nacho.world_cup_russia_2018.Config.URLRest;
 import com.example.nacho.world_cup_russia_2018.Properties.ListTeams;
 import com.example.nacho.world_cup_russia_2018.R;
+import com.example.nacho.world_cup_russia_2018.View.TeamsActivity;
+import com.github.snowdream.android.widget.SmartImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,8 @@ public class TeamsAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<ListTeams> equiposList;
     private Activity activity;
+    private String images;
+
 
     private String getId;
 
@@ -35,6 +40,8 @@ public class TeamsAdapter extends BaseAdapter {
         this.activity=activity;
         this.equiposList=list;
     }
+
+
 
     @Override
     public int getCount() {
@@ -61,15 +68,19 @@ public class TeamsAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.teams_list_view, null);
 
         TextView txtNombreEquipo = convertView.findViewById(R.id.txtNombreEquipo);
+        SmartImageView imageView = convertView.findViewById(R.id.imgTeamIcon);
         TextView txtGrupo = convertView.findViewById(R.id.txtGrupo);
         TextView txtTitulos = convertView.findViewById(R.id.txtTitulos);
 
-        ListTeams m = equiposList.get(position);
 
-        txtNombreEquipo.setText(m.getTeamName());
-        txtGrupo.setText(m.getGroup());
-        txtTitulos.setText(m.getTrophies());
+        images  = (equiposList.get(position).getImages());
+        String urlfinal = images;
 
+        txtNombreEquipo.setText(equiposList.get(position).getTeamName());
+        txtGrupo.setText(equiposList.get(position).getGroup());
+        txtTitulos.setText(equiposList.get(position).getTrophies());
+
+        imageView.setImageUrl(urlfinal, null);
 
         return convertView;
     }

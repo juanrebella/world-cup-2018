@@ -9,8 +9,17 @@ public class ListStadiums {
     private int idStadium;
     private String nameStadium;
     private String cityStadium;
+    private String images;
     private long latStadium;
     private long longStadium;
+
+    public String getImages() {
+        return images;
+    }
+
+    public void setImages(String images) {
+        this.images = images;
+    }
 
     public int getIdStadium() {
         return idStadium;

@@ -137,11 +137,13 @@ public class TeamsActivity extends AppCompatActivity {
                                 String name = object.getString("name");
                                 String group = object.getString("group_id");
                                 String trophies = object.getString("trophies");
+                                String imagenes = object.getString("url");
 
 
                                 objDatos.setTeamName("Equipo " +name);
                                 objDatos.setGroup("Grupo " +group);
                                 objDatos.setTrophies("Títulos: " +trophies);
+                                objDatos.setImages(imagenes);
 
                                 listaConmebol.add(objDatos);
 
@@ -187,11 +189,14 @@ public class TeamsActivity extends AppCompatActivity {
                                 String name = object.getString("name");
                                 String group = object.getString("group_id");
                                 String trophies = object.getString("trophies");
+                                String imagenes = object.getString("url");
 
 
                                 objDatos2.setTeamName("Equipo " +name);
                                 objDatos2.setGroup("Grupo " +group);
                                 objDatos2.setTrophies("Títulos: " +trophies);
+                                objDatos2.setTrophies(imagenes);
+
 
                                 listaAsia.add(objDatos2);
 
@@ -220,8 +225,10 @@ public class TeamsActivity extends AppCompatActivity {
 
         mQueue.add(json2);
 
-        adapter = new TeamsAdapter(TeamsActivity.this, listaConmebol);
-        adapter2 = new TeamsAdapter(TeamsActivity.this, listaAsia);
+
+            adapter = new TeamsAdapter(TeamsActivity.this, listaConmebol);
+            adapter2 = new TeamsAdapter(TeamsActivity.this, listaAsia);
+
         listConmebol.setAdapter(adapter);
         listAsia.setAdapter(adapter2);
     }
@@ -345,4 +352,5 @@ public class TeamsActivity extends AppCompatActivity {
       }
 
 
-    }
+
+}
