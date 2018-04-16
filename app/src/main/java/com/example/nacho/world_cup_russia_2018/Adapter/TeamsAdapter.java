@@ -33,8 +33,6 @@ public class TeamsAdapter extends BaseAdapter {
     private String images;
 
 
-    private String getId;
-
     public TeamsAdapter(Activity activity, List<ListTeams> list){
 
         this.activity=activity;

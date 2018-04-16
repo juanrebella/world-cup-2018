@@ -47,39 +47,24 @@
 
 
         <TextView
-            android:id="@+id/textViewHeader"
+            android:id="@+id/stadiums"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:background="@color/md_blue_200"
-            android:text="@string/activity_teams"
-            android:textAlignment="center"
-            android:textColor="@color/md_black_1000"
-            android:paddingTop="10dp"
-            android:textSize="45sp"
-            android:textStyle="bold"/>
-
-
-        <TextView
-            android:id="@+id/conmebol"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp"
-            android:background="@color/md_blue_500_75"
+            android:background="@color/md_green_500"
             android:text="Estadios"
             android:textAlignment="center"
             android:textColor="@color/md_black_1000"
-            android:paddingTop="10dp"
-            android:textSize="18sp"
+            android:padding="10dp"
+            android:textSize="25sp"
             android:textStyle="bold"/>
 
         <ListView
-            android:id="@+id/lstConmebol"
+            android:id="@+id/lstStadiums"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/md_blue_A100">
+            android:background="@color/md_green_50">
         </ListView>
 
     </LinearLayout>
