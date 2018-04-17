@@ -3,6 +3,9 @@ package com.example.nacho.world_cup_russia_2018.View;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,6 +41,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,14 +51,14 @@ public class StadiumsActivity extends AppCompatActivity {
     ActionBar actionBar;
     DrawerLayout drawerLayout;
     TextView textView;
-    ImageView Main;
+    ImageView imgStadiumIcon;
     Toolbar toolbar;
     ListView lstStadiums;
     RequestQueue mQueue;
     StadiumAdapter adapter;
     String url = URLRest.urlApi;
 
-    public List<ListStadiums> listaEstadios = new LinkedList<ListStadiums>(); // TODO: Cambiar a estadios
+    public List<ListStadiums> listaEstadios = new LinkedList<ListStadiums>();
 
 
     @Override
@@ -71,13 +76,19 @@ public class StadiumsActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_action_bar_icon);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+
         lstStadiums = findViewById(R.id.lstStadiums);
         drawerLayout = findViewById(R.id.navigation_drawer_layout);
 
         lstStadiums.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "has clickeado "+position , Toast.LENGTH_SHORT).show();
+
+                String txtNombreEstadio = ((TextView)view.findViewById(R.id.txtNombreEstadio)).getText().toString();
+
+                Intent intent= new Intent(StadiumsActivity.this, DetailsStadiumActivity.class);
+                intent.putExtra("titulo", txtNombreEstadio);
+                startActivity(intent);
 
                 //TODO: al hacer clic en imágenes abrir una nueva activity y mostrar detalle (foto más grande).
             }
@@ -104,12 +115,8 @@ public class StadiumsActivity extends AppCompatActivity {
                                 JSONObject object = jsonArray.getJSONObject(i);
                                 ListStadiums objDatos = new ListStadiums();
 
-
-
                                 String name = object.getString("stadiums_name");
                                 String imagenes = object.getString("url");
-
-
 
                                 objDatos.setNameStadium(name);
                                 objDatos.setImages(imagenes);
@@ -199,6 +206,9 @@ public class StadiumsActivity extends AppCompatActivity {
                                 /*- Equipos -*/
                                     menuItem.setChecked(true);
                                     drawerLayout.closeDrawer(GravityCompat.START);
+                                    Intent intentTeams = new Intent(StadiumsActivity.this, TeamsActivity.class);
+                                    finish();
+                                    startActivity(intentTeams);
 
                                     break;
 

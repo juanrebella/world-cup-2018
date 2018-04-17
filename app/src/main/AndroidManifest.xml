@@ -23,7 +23,8 @@
         <activity android:name=".View.GroupsActivity" />
         <activity android:name=".View.StadiumsActivity" />
         <activity android:name=".View.AboutUsActivity" />
-        <activity android:name=".View.LoginActivity"></activity>
+        <activity android:name=".View.LoginActivity" />
+        <activity android:name=".View.DetailsStadiumActivity"></activity>
     </application>
 
 </manifest>
