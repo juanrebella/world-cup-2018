@@ -12,16 +12,5 @@
         android:scaleType="centerCrop"
         android:background="@drawable/logotipo_fifa2018_russia" />
 
-    <ImageView
-        android:id="@+id/imgMain"
-        android:layout_marginTop="@dimen/navigation_drawer_header_margin"
-        android:layout_width="160dp"
-        android:layout_height="150dp"
-        android:padding="5dp"
-        android:scaleType="centerCrop"
-        android:background="@color/md_orange_300"
-        android:src="@drawable/world_cup_2018" />
-
-
 
 </FrameLayout>

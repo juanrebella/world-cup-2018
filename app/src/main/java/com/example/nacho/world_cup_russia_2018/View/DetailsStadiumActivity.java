@@ -42,7 +42,7 @@ public class DetailsStadiumActivity extends AppCompatActivity {
     ActionBar actionBar;
     DrawerLayout drawerLayout;
     TextView nombreEstadio, titleDetailsStadium, ciudadEstadio;
-    ImageView Main;
+    ImageView imageStadiumDetails;
     Toolbar toolbar;
     RequestQueue mQueue;
     StadiumAdapter adapter;
@@ -84,55 +84,12 @@ public class DetailsStadiumActivity extends AppCompatActivity {
         if (params != null) {
 
             //TODO: Pasar la imagen (json object) de StadiumActivity a DetailsStadiumActivity como Intent Putextra
+
             itemSelect = params.getString("titulo");
             titleDetailsStadium.setText(itemSelect);
         } else {
             Toast.makeText(getApplicationContext(), null, Toast.LENGTH_LONG).show();
         }
-
-
-        JsonObjectRequest json = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonArray =  response.getJSONArray("Stadiums");
-
-                            for (int i = 0; i < jsonArray.length(); i++){
-                                JSONObject object = jsonArray.getJSONObject(i);
-
-
-                                String name = object.getString("stadiums_name");
-                                String ciudadEstadios = object.getString("stadiums_city");
-                                String imagenes = object.getString("url");
-
-                                nombreEstadio.setText(name);
-                                ciudadEstadio.setText(ciudadEstadios);
-                                smartView.setImageUrl(imagenes, null);
-
-
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                AlertDialog.Builder add = new AlertDialog.Builder(DetailsStadiumActivity.this);
-                add.setMessage(error.getMessage()).setCancelable(true);
-                AlertDialog alert = add.create();
-                alert.setTitle("Error!!!");
-                alert.show();
-
-            }
-        });
-
-        mQueue.add(json);
 
     }
 

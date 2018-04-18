@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -36,6 +37,7 @@ import com.example.nacho.world_cup_russia_2018.Model.HttpConnection;
 import com.example.nacho.world_cup_russia_2018.Properties.ListStadiums;
 import com.example.nacho.world_cup_russia_2018.Properties.ListTeams;
 import com.example.nacho.world_cup_russia_2018.R;
+import com.github.snowdream.android.widget.SmartImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
