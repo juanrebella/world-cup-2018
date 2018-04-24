@@ -39,7 +39,10 @@
             android:background="?attr/colorControlHighlight"
             android:elevation="4dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ToolbarTheme" />
+            app:theme="@style/ToolbarTheme">
+
+
+        </android.support.v7.widget.Toolbar>
 
         <TextView
             android:id="@+id/textView"

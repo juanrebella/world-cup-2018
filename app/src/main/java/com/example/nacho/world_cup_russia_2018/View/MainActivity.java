@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        String[] grupo_a = {"Rusia", "Uruguay", "Arabia Saudita", "EEgipto"};
+
         HttpConnection service = new HttpConnection();
-       // new ListadoEquipos().execute();
+        // new ListadoEquipos().execute();
 
         /*- Action Bar-*/
         toolbar = findViewById(R.id.toolbar);
@@ -68,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.navigation_drawer_layout);
 
 
-
         NavigationView navigationView = findViewById(R.id.navigation_view);
         if (navigationView != null) {
             setupNavigationDrawerContent(navigationView);
@@ -76,147 +78,22 @@ public class MainActivity extends AppCompatActivity {
 
         setupNavigationDrawerContent(navigationView);
 
-        List<ListTeams> teams = new ArrayList<>();
-
-        ListTeams equipos = new ListTeams();
-
-        String idTeam;
-        String group;
-        String teamName;
-        String trophies;
-
-
-
-
-        try {
-            JSONObject object = new JSONObject(json);
-
-            idTeam = object.getString("team_id");
-            group = object.getString("group_id");
-            teamName = object.getString("name");
-            trophies = object.getString("trophies");
-
-
-            equipos.setIdTeam(idTeam);
-            equipos.setGroup(group);
-            equipos.setTeamName(teamName);
-            equipos.setTrophies(trophies);
-
-            teams.add(equipos); //creamos un objeto Fruta y lo insertamos en la lista
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        ArrayAdapter adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, teams);
-        lstmenu.setAdapter(adapter);
-
     }
 
-    /*-
-
-    public class ListadoEquipos extends AsyncTask<Void, Void, JSONArray> {
-
-
-        String response = "";
-        HashMap<String, String> postDataParams;
-        //String urlparams = url + "title";
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(MainActivity.this);
-            progressDialog.setMessage("Buscando datos..");
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-        }
-
-
-        @Override
-        protected JSONArray doInBackground(Void... params) {
-
-            postDataParams = new HashMap<String, String>();
-            postDataParams.put("userId", idUserDeveloper);
-            postDataParams.put("", "");
-
-            response = service.ServerDataHeader(url, postDataParams);
-
-            try {
-                JSONObject jsonResponse;
-                jsonResponse = new JSONObject(response);
-                status = jsonResponse.getInt("status");
-                jsonArray = jsonResponse.optJSONArray("response");
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            return jsonArray;
-        }
-
-        @Override
-        protected void onPostExecute(JSONArray jsonArray) {
-            super.onPostExecute(jsonArray);
-            if (progressDialog.isShowing()) {
-                progressDialog.dismiss();
-                if (status == 200) {
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        try {
-
-                            Listadatos_ws objDatos = new Listadatos_ws();
-
-                            int id;
-                            String name;
-                            String precio;
-                            String imagenes;
-
-
-
-                            JSONObject objet = jsonArray.getJSONObject(i);
-
-                            id = objet.getInt("id");
-                            name = objet.getString("name");
-                            precio = objet.getString("precio");
-                            imagenes = objet.getString("nameImage");
-
-                            objDatos.setId(id);
-                            objDatos.setNombre(name);
-                            objDatos.setPrecio(precio);
-                            objDatos.setImage(imagenes);
-
-                            lista.add(objDatos);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-
-                    adapter = new AdapterLista(MainActivity.this, lista, R.layout.item_lista_comida);
-                    lstMenu.setAdapter(adapter);
-
-                }
-
-            }
-        }
-    }
--*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         //Inflamos el menú
-
         getMenuInflater().inflate(R.menu.menu_icons, menu);
-
-        return true;
+          return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+
 
             case R.id.refreshMain:
                 //ABRIMOS EL DRAWER
