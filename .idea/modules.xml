@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/world-cup-2018.iml" filepath="$PROJECT_DIR$/.idea/world-cup-2018.iml" />
+      <module fileurl="file://$PROJECT_DIR$/world-cup-2018.iml" filepath="$PROJECT_DIR$/world-cup-2018.iml" />
+      <module fileurl="file://G:\androidstudio\master v. 01\world-cup-2018\.idea\world-cup-2018.iml" filepath="G:\androidstudio\master v. 01\world-cup-2018\.idea\world-cup-2018.iml" />
     </modules>
   </component>
 </project>
