@@ -42,30 +42,28 @@ public class GroupsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
 
+
+
         String[] grupos = {"Grupo A", "Grupo B", "Grupo C",
-                "Grupo D", "Grupo E", "Grupo F", "Grupo G", "Grupo H"};
+                         "Grupo D", "Grupo E", "Grupo F", "Grupo G", "Grupo H"};
 
         HttpConnection service = new HttpConnection();
         // new ListadoEquipos().execute();
 
         /*- Action Bar-*/
         toolbar = findViewById(R.id.toolbar);
+        hideToolbar();
         setSupportActionBar(toolbar);
 
-        spinner = findViewById(R.id.spinner);
+        /*Action Bar*/
+        actionBar();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(GroupsActivity.this, android.R.layout.simple_list_item_1, grupos);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
+        /*Spinner*/
+        setSpinner(grupos);
 
-        actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_action_bar_icon);
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         lstmenu = findViewById(R.id.lstMenu);
         drawerLayout = findViewById(R.id.navigation_drawer_layout);
-
-
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         if (navigationView != null) {
@@ -96,6 +94,7 @@ public class GroupsActivity extends AppCompatActivity {
                 //Refrescaríamos la pantalla para ver noticias
 
                 Toast.makeText(this, "Refrescando ...", Toast.LENGTH_SHORT).show();
+                drawerLayout.openDrawer(GravityCompat.START);
                 return true;
 
             case android.R.id.home:
@@ -188,5 +187,25 @@ public class GroupsActivity extends AppCompatActivity {
                             return true;
                         }
                     });
+    }
+
+    private void hideToolbar(){
+        toolbar.setTitle("");
+    }
+
+    private void actionBar() {
+        actionBar = getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_action_bar_icon);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void setSpinner(String[] grupos){
+        spinner = findViewById(R.id.spinner);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(GroupsActivity.this,
+                android.R.layout.simple_list_item_1, grupos);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+
     }
 }

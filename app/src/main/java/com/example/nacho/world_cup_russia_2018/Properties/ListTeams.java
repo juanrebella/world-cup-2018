@@ -14,6 +14,7 @@ public class ListTeams {
     private String trophies;
     private String images;
 
+
     public String getImages() {
         return images;
     }

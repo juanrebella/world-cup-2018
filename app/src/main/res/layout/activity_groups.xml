@@ -51,20 +51,6 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp"
-            android:background="@color/md_amber_100"
-            android:text="@string/groups"
-            android:textAlignment="center"
-            android:textColor="@color/md_black_1000"
-            android:paddingTop="10dp"
-            android:textSize="45sp"
-            android:textStyle="bold" />
-
         <ListView
             android:id="@+id/lstMenu"
             android:layout_width="match_parent"

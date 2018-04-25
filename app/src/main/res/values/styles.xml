@@ -20,10 +20,4 @@
         <item name="textAppearanceListItem">@style/TextAppearance.AppCompat.Body2</item>
     </style>
 
-    <style name="ThemeOverlay.AppCompat.Dark"></style>
-
-    <style name="TextAppearance.AppCompat.Body1"></style>
-
-    <style name="TextAppearance.AppCompat.Body2"></style>
-
 </resources>

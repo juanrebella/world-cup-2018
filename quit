@@ -1,0 +1,70 @@
+[33mcommit 15621205e84627912cea842cf2b761a67256857e[m[33m ([m[1;36mHEAD -> [m[1;32mpruebas[m[33m, [m[1;31morigin/pruebas[m[33m)[m
+Author: juanrebella <contenedores2040@gmail.com>
+Date:   Thu Apr 5 17:25:26 2018 -0300
+
+    - Se pasó Json con la libreria Volley.
+    
+    - Creando nuevas listas para los equipos.
+    - Crear pestaña de estadios y partidos..
+    
+    - Creanod multiples listas segun confederaciones.
+
+[33mcommit dbc8501d782dd1fc86e52614ece524e011037604[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: juanrebella <contenedores2040@gmail.com>
+Date:   Thu Apr 5 16:43:52 2018 -0300
+
+    - Se pasó Json con la libreria Volley.
+    
+    - Creando nuevas listas para los equipos.
+    - Crear pestaña de estadios y partidos..
+
+[33mcommit 6d1c272ae92f304c3238276b4f30c4fd7cad5951[m
+Author: juanrebella <contenedores2040@gmail.com>
+Date:   Mon Apr 2 22:35:50 2018 -0300
+
+    falta json Object y ver la lista
+
+[33mcommit 73d2586a0de06a91d008482c430ab2f4e92702bd[m
+Author: juanrebella <contenedores2040@gmail.com>
+Date:   Tue Mar 27 23:39:04 2018 -0300
+
+    trabajando con listview, jsonobject y adapterview.
+
+[33mcommit 028df1c08c5bfaf947ac542fd4cbbbef8b70cc5e[m
+Merge: 1ad1be8 ba9d559
+Author: juanrebella <contenedores2040@gmail.com>
+Date:   Mon Mar 26 16:33:01 2018 -0300
+
+    Merge branch 'revisiones' of https://github.com/juanrebella/world-cup-2018
+
+[33mcommit 1ad1be8b193afbaa3b2c4a16bb69bc5d2257c7ea[m
+Author: juanrebella <contenedores2040@gmail.com>
+Date:   Mon Mar 26 16:32:48 2018 -0300
+
+    cosas
+
+[33mcommit ba9d559e998b6055b7d3fbb43ca9bc08791852ab[m[33m ([m[1;31morigin/revisiones[m[33m)[m
+Author: Juan Ignacio Rebella <contenedores2040@gmail.com>
+Date:   Mon Mar 26 16:29:52 2018 -0300
+
+    Agregando imágenes
+
+[33mcommit 23c54c5600c734b67788b842739dc93afc8fe597[m
+Author: Santiago <santiagorebella@hotmail.com>
+Date:   Thu Mar 8 14:20:37 2018 -0300
+
+    - Agregando Action Bar.
+    - '' Nav Drawer.
+    - Comenzando con la activity Equipos.
+
+[33mcommit e9ecb1161db75b78cda31689c339116c1aff65f8[m
+Author: juanrebella <contenedores2040@gmail.com>
+Date:   Fri Feb 23 15:03:59 2018 -0300
+
+    - Se agregó nav drawer, nav header y activities para los disatintos items.
+
+[33mcommit 268005ba869996e4a1a82fd8154531c421bd32ec[m
+Author: juanrebella <contenedores2040@gmail.com>
+Date:   Thu Feb 22 16:12:31 2018 -0300
+
+    Init commit
