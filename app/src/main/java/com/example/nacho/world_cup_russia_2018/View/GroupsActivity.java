@@ -11,44 +11,57 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nacho.world_cup_russia_2018.Adapter.GroupAdapter;
 import com.example.nacho.world_cup_russia_2018.Model.HttpConnection;
+import com.example.nacho.world_cup_russia_2018.Properties.ListStadiums;
+import com.example.nacho.world_cup_russia_2018.Properties.ListTeams;
 import com.example.nacho.world_cup_russia_2018.R;
 
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 
 public class GroupsActivity extends AppCompatActivity {
 
     ActionBar actionBar;
-    ListView lstmenu;
+    ListView lstGroups;
     DrawerLayout drawerLayout;
-    TextView textView;
+    TextView titleGroup;
     ImageView Main;
     Toolbar toolbar;
     Spinner spinner;
-
+    GroupAdapter adapterGroup;
     URL url;
     HttpConnection service;
     ProgressDialog progressDialog;
+    public List<ListTeams> listTeams = new LinkedList<ListTeams>();
+    public String option = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
 
+        lstGroups = findViewById(R.id.lstGroups);
+        drawerLayout = findViewById(R.id.navigation_drawer_layout);
 
 
-        String[] grupos = {"Grupo A", "Grupo B", "Grupo C",
-                         "Grupo D", "Grupo E", "Grupo F", "Grupo G", "Grupo H"};
 
+//    adapterGroup = new GroupAdapter(GroupsActivity.this, listTeams);
+//     lstGroups.setAdapter(adapterGroup);
         HttpConnection service = new HttpConnection();
         // new ListadoEquipos().execute();
+
 
         /*- Action Bar-*/
         toolbar = findViewById(R.id.toolbar);
@@ -59,11 +72,33 @@ public class GroupsActivity extends AppCompatActivity {
         actionBar();
 
         /*Spinner*/
-        setSpinner(grupos);
+        setSpinner();
 
 
-        lstmenu = findViewById(R.id.lstMenu);
-        drawerLayout = findViewById(R.id.navigation_drawer_layout);
+//TODO: al hacer clic en algun elemento de la lista, transformar el layout en grupos y titulos.
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapter, View v, int i, long id) {
+
+                String text = spinner.getSelectedItem().toString();
+
+                //TODO: Corregir el switch (no lee la lista ni el adaptador).
+                switch (i)
+                {
+                    case (1):
+                       Toast.makeText(getApplicationContext(), "hola "+ text, Toast.LENGTH_SHORT ).show();
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         if (navigationView != null) {
@@ -199,11 +234,11 @@ public class GroupsActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setSpinner(String[] grupos){
+    private void setSpinner(){
         spinner = findViewById(R.id.spinner);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(GroupsActivity.this,
-                android.R.layout.simple_list_item_1, grupos);
+        ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(getApplicationContext(),
+                R.array.spinner_array, android.R.layout.simple_list_item_1);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
 

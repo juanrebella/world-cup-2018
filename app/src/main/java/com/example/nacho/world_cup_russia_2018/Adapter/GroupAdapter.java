@@ -9,32 +9,32 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.nacho.world_cup_russia_2018.Properties.ListStadiums;
+import com.example.nacho.world_cup_russia_2018.Properties.ListTeams;
 import com.example.nacho.world_cup_russia_2018.R;
+import com.example.nacho.world_cup_russia_2018.View.GroupsActivity;
 import com.github.snowdream.android.widget.SmartImageView;
 
 import java.util.List;
 
 /**
- * Created by Nacho on 16/04/2018.
+ * Created by Nacho on 25/04/2018.
  */
 
-public class StadiumAdapter extends BaseAdapter {
+public class GroupAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private List<ListStadiums> stadiumsList;
+    private List<ListTeams> groupList;
     private Activity activity;
-    private String images;
-    private TextView txtNombreEstadio;
-    private SmartImageView imageView;
+    private TextView txt1, txt2, txt3, txt4;
 
-    public StadiumAdapter(Activity activity, List<ListStadiums> list){
+    public GroupAdapter (Activity activity, List<ListTeams> list){
         this.activity=activity;
-        this.stadiumsList=list;
+        this.groupList=list;
     }
 
     @Override
     public int getCount() {
-        return stadiumsList.size();
+        return groupList.size();
     }
 
     @Override
@@ -54,19 +54,19 @@ public class StadiumAdapter extends BaseAdapter {
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.stadium_list_view_items, parent, false);
+            convertView = inflater.inflate(R.layout.groups_list_view_items, parent, false);
 
 
-        txtNombreEstadio = convertView.findViewById(R.id.txtNombreEstadio);
-        imageView = convertView.findViewById(R.id.imgStadiumIcon);
+        txt1 = convertView.findViewById(R.id.equipo1);
+        txt2 = convertView.findViewById(R.id.equipo2);
+        txt3 = convertView.findViewById(R.id.equipo3);
+        txt4 = convertView.findViewById(R.id.equipo4);
 
-        images  = (stadiumsList.get(position).getImages());
-        String urlfinal = images;
-
-        txtNombreEstadio.setText(stadiumsList.get(position).getNameStadium());
-        imageView.setImageUrl(urlfinal, null);
+        txt1.setText(groupList.get(position).getTeamName());
+        txt2.setText(groupList.get(position).getTeamName());
+        txt3.setText(groupList.get(position).getTeamName());
+        txt4.setText(groupList.get(position).getTeamName());
 
         return convertView;
-
     }
 }

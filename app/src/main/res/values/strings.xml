@@ -8,4 +8,16 @@
     <string name="hint_username">Usuario</string>
     <string name="create_here">Crear una cuenta</string>
     <string name="groups">Grupos</string>
+
+
+    <string-array name="spinner_array">
+        <item>Grupo A</item>
+        <item>Grupo B</item>
+        <item>Grupo C</item>
+        <item>Grupo D</item>
+        <item>Grupo E</item>
+        <item>Grupo F</item>
+        <item>Grupo G</item>
+        <item>Grupo H</item>
+    </string-array>
 </resources>

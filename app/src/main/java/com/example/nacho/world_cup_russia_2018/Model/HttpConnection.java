@@ -22,6 +22,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class HttpConnection {
 
+    //TODO: crear un control generico de json para llamarlo luego
+
     String response = "";
     URL url;
 

@@ -43,16 +43,16 @@
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-
-                />
+                android:spinnerMode="dropdown"
+                android:padding="5dp" />
 
 
         </android.support.v7.widget.Toolbar>
 
         <ListView
-            android:id="@+id/lstMenu"
+            android:id="@+id/lstGroups"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </ListView>
