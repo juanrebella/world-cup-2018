@@ -13,6 +13,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,6 +35,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.nacho.world_cup_russia_2018.Adapter.CustomAdapterStadiums;
 import com.example.nacho.world_cup_russia_2018.Adapter.StadiumAdapter;
 import com.example.nacho.world_cup_russia_2018.Config.URLRest;
 import com.example.nacho.world_cup_russia_2018.Model.HttpConnection;
@@ -55,10 +60,12 @@ public class StadiumsActivity extends AppCompatActivity {
     TextView textView;
     ImageView imgStadiumIcon;
     Toolbar toolbar;
+    RecyclerView recyclerView;
     ListView lstStadiums;
     RequestQueue mQueue;
-    StadiumAdapter adapter;
+    CustomAdapterStadiums adapter;
     String url = URLRest.urlApi;
+    GridLayoutManager gridLayout;
 
     public List<ListStadiums> listaEstadios = new LinkedList<ListStadiums>();
 
@@ -79,23 +86,12 @@ public class StadiumsActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        lstStadiums = findViewById(R.id.lstStadiums);
+
+        recyclerView = findViewById(R.id.lstStadiums);
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(llm);
+
         drawerLayout = findViewById(R.id.navigation_drawer_layout);
-
-        lstStadiums.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                String txtNombreEstadio = ((TextView)view.findViewById(R.id.txtNombreEstadio)).getText().toString();
-
-                Intent intent= new Intent(StadiumsActivity.this, DetailsStadiumActivity.class);
-                intent.putExtra("titulo", txtNombreEstadio);
-                startActivity(intent);
-
-                //TODO: al hacer clic en imágenes abrir una nueva activity y mostrar detalle (foto más grande).
-            }
-        });
-
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         if (navigationView != null) {
@@ -130,6 +126,7 @@ public class StadiumsActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
                         adapter.notifyDataSetChanged();
                     }
 
@@ -147,8 +144,18 @@ public class StadiumsActivity extends AppCompatActivity {
 
         mQueue.add(json);
 
-        adapter = new StadiumAdapter(StadiumsActivity.this, listaEstadios);
-        lstStadiums.setAdapter(adapter);
+        adapter = new CustomAdapterStadiums(listaEstadios, new CustomAdapterStadiums.OnItemClickListener() {
+            @Override
+            public void onItemClick(ListStadiums item) {
+
+                String txtNombreEstadio = ((TextView)findViewById(R.id.txtNombreEstadio)).getText().toString();
+                Intent intent= new Intent(StadiumsActivity.this, DetailsStadiumActivity.class);
+                intent.putExtra("titulo", txtNombreEstadio);
+                startActivity(intent);
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
 
     }
 

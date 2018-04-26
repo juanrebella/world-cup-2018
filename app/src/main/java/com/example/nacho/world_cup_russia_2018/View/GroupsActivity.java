@@ -90,7 +90,6 @@ public class GroupsActivity extends AppCompatActivity {
                        Toast.makeText(getApplicationContext(), "hola "+ text, Toast.LENGTH_SHORT ).show();
 
                 }
-
             }
 
             @Override

@@ -251,8 +251,9 @@ public class TeamsActivity extends AppCompatActivity {
             case R.id.refreshMain:
                 //ABRIMOS EL DRAWER
                 //Refrescaríamos la pantalla para ver noticias
-
-                Toast.makeText(this, "Refrescando", Toast.LENGTH_SHORT).show();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
                 return true;
 
             case android.R.id.home:
@@ -350,7 +351,6 @@ public class TeamsActivity extends AppCompatActivity {
                     }
                 });
       }
-
 
 
 }
