@@ -17,6 +17,8 @@ import java.util.List;
  * Created by Nacho on 26/04/2018.
  */
 
+//TODO: corregir el scroll (existen búcles vacíos entre las imágenes).
+
 public class CustomAdapterStadiums extends RecyclerView.Adapter<CustomAdapterStadiums.ViewHolder>{
 
     public interface OnItemClickListener {

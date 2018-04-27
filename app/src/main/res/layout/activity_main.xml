@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="@bool/fitsSystemWindows">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +31,7 @@
         android:orientation="vertical"
         android:layout_marginTop="@dimen/status_bar_margin_top">
 
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -40,7 +40,6 @@
             android:elevation="4dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/ToolbarTheme">
-
 
         </android.support.v7.widget.Toolbar>
 
@@ -53,17 +52,17 @@
             android:background="@color/md_amber_100"
             android:text="@string/main_activity_news"
             android:textAlignment="center"
+            android:padding="5dp"
             android:textColor="@color/md_black_1000"
-            android:paddingTop="10dp"
-            android:textSize="45sp"
+            android:textSize="35sp"
             android:textStyle="bold" />
 
         <ListView
             android:id="@+id/lstMenu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </ListView>
+            android:layout_height="wrap_content">
 
+        </ListView>
     </LinearLayout>
 
 
@@ -78,5 +77,6 @@
         app:itemTextColor="@color/md_black_1000"
         app:menu="@menu/nav_drawer_menu"
         app:theme="@style/NavigationViewTheme" />
+
 
 </android.support.v4.widget.DrawerLayout>

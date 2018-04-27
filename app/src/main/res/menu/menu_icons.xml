@@ -11,7 +11,5 @@
                 android:orderInCategory="100"
                 app:showAsAction="ifRoom"/>
 
-        <!-- TODO: Onclick al refresh -->
-
     </group>
 </menu>

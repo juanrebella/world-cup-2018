@@ -682,6 +682,7 @@
     <color name="md_falcon_A400_25">#40598bae</color>
 
     <color name="md_statusbar_translucent">#4000</color>
+    <color name="team_title">#b3e5fc</color>
 
 
     <style name="RaisedButtonDark" parent="Theme.AppCompat.Light">

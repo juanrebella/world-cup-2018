@@ -121,14 +121,10 @@ public class GroupsActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-
-
             case R.id.refreshMain:
-                //ABRIMOS EL DRAWER
                 //Refrescaríamos la pantalla para ver noticias
 
                 Toast.makeText(this, "Refrescando ...", Toast.LENGTH_SHORT).show();
-                drawerLayout.openDrawer(GravityCompat.START);
                 return true;
 
             case android.R.id.home:

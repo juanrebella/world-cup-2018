@@ -3,6 +3,7 @@ package com.example.nacho.world_cup_russia_2018.View;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -36,6 +38,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
              /*----------- Variables -------------*/
+
 
     ActionBar actionBar;
     ListView lstmenu;
